@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Brasserie Park — Keuze Maker</title>
+  <meta name="description" content="Weet je niet wat je wilt bestellen? Doe de quiz en ontdek wat perfect bij jou past bij Brasserie Park in Leiderdorp!">
+  <meta name="theme-color" content="#C8963E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            park: {
+              50: '#FFF8F0',
+              100: '#FFE8CC',
+              200: '#FFD699',
+              300: '#E0B060',
+              400: '#C8963E',
+              500: '#A87A2F',
+              600: '#8B5E1E',
+              700: '#5C3F14',
+              800: '#3D2A0D',
+              900: '#1E1508',
+            },
+            dark: {
+              DEFAULT: '#1a1a1a',
+              50: '#2a2a2a',
+              100: '#1e2620',
+              200: '#232323',
+            },
+            green: {
+              accent: '#4A7C3F',
+              light: '#5A9C4F',
+            }
+          },
+          fontFamily: {
+            heading: ['Playfair Display', 'serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '20px',
+            '3xl': '24px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PostHog Analytics -->
+  <!--
+    HOW TO SET UP POSTHOG:
+    1. Create a free account at https://posthog.com
+    2. Get your API key from Project Settings
+    3. Replace 'YOUR_POSTHOG_API_KEY' below with your real key
+    4. Replace 'YOUR_POSTHOG_HOST' with your PostHog host (e.g., 'https://eu.posthog.com')
+  -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    // Initialize PostHog with your API key:
+    // posthog.init('YOUR_POSTHOG_API_KEY', { api_host: 'YOUR_POSTHOG_HOST' });
+  </script>
+</head>
+
+<body class="bg-dark text-white font-body min-h-screen bg-pattern">
+
+  <!-- ============================================
+       SCREEN: LANDING
+       ============================================ -->
+  <div id="screen-landing" class="screen active items-center justify-center px-6 py-12" role="main">
+    <div class="max-w-md w-full mx-auto text-center flex flex-col items-center gap-8">
+
+      <!-- Logo -->
+      <div class="float-logo">
+        <div class="w-28 h-28 mx-auto rounded-3xl bg-park-400/20 border border-park-400/30 flex items-center justify-center" id="landing-logo">
+          <span class="font-heading font-bold text-4xl text-park-400">BP</span>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div>
+        <h1 class="font-heading font-800 text-5xl sm:text-6xl text-park-400 tracking-tight leading-tight">
+          Keuze Maker
+        </h1>
+        <p class="text-park-200/70 font-heading text-lg mt-2 tracking-wide">
+          by Brasserie Park
+        </p>
+      </div>
+
+      <!-- Tagline -->
+      <p class="text-white/70 text-lg leading-relaxed max-w-sm">
+        Weet je niet wat je wilt bestellen? 🤔<br>
+        <span class="text-park-300 font-semibold">Geen stress!</span> Doe onze snelle quiz en ontdek wat
+        <span class="text-park-400 font-semibold">perfect bij jou past</span>.
+      </p>
+
+      <!-- Features -->
+      <div class="grid grid-cols-3 gap-3 w-full max-w-xs text-center">
+        <div class="glass-card p-3">
+          <div class="text-2xl mb-1">⏱️</div>
+          <div class="text-xs text-white/50">30 sec</div>
+        </div>
+        <div class="glass-card p-3">
+          <div class="text-2xl mb-1">🍽️</div>
+          <div class="text-xs text-white/50">6 vragen</div>
+        </div>
+        <div class="glass-card p-3">
+          <div class="text-2xl mb-1">🎯</div>
+          <div class="text-xs text-white/50">Op maat</div>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <button
+        id="btn-start-quiz"
+        class="btn-pulse w-full max-w-xs bg-park-400 hover:bg-park-300 text-dark font-heading font-bold text-xl py-5 px-8 rounded-2xl transition-colors duration-200 shadow-lg cursor-pointer"
+        aria-label="Start de keuze quiz"
+      >
+        Start Keuze Quiz ✨
+      </button>
+
+      <!-- Subtle footer -->
+      <p class="text-white/30 text-xs mt-4">
+        Houtkamp, Leiderdorp — 7 dagen per week open
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ============================================
+       SCREEN: QUIZ
+       ============================================ -->
+  <div id="screen-quiz" class="screen items-center px-6 pt-8 pb-12" role="main" aria-live="polite">
+    <div class="max-w-md w-full mx-auto flex flex-col gap-6 flex-1">
+
+      <!-- Progress Header -->
+      <div class="flex items-center gap-4">
+        <button
+          id="btn-back"
+          class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 transition-colors text-white/60 hover:text-white flex-shrink-0"
+          aria-label="Vorige vraag"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="flex-1">
+          <div class="flex justify-between items-center mb-2">
+            <span id="quiz-step-label" class="text-sm text-white/50 font-medium">Vraag 1 van 6</span>
+            <span id="quiz-step-fraction" class="text-sm text-park-400 font-heading font-bold">1/6</span>
+          </div>
+          <div class="progress-track">
+            <div id="quiz-progress" class="progress-fill" style="width: 16.67%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div id="quiz-question-card" class="glass-card p-6 sm:p-8 flex-1 flex flex-col justify-center">
+        <div class="text-center mb-8">
+          <div id="quiz-emoji" class="text-5xl mb-4 emoji-bounce">⏰</div>
+          <h2 id="quiz-question" class="font-heading font-bold text-2xl sm:text-3xl text-white leading-tight">
+            Wat voor moment is het?
+          </h2>
+        </div>
+
+        <!-- Options -->
+        <div id="quiz-options" class="flex flex-col gap-3">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================
+       SCREEN: RESULTS
+       ============================================ -->
+  <div id="screen-results" class="screen items-center px-6 pt-8 pb-12" role="main">
+    <div class="max-w-md w-full mx-auto flex flex-col gap-6">
+
+      <!-- Header -->
+      <div class="text-center result-card">
+        <div class="text-5xl mb-3">🎉</div>
+        <h2 class="font-heading font-800 text-3xl sm:text-4xl text-park-400 leading-tight">
+          Jouw Park Keuze!
+        </h2>
+        <p class="text-white/50 mt-2 text-sm">Op basis van jouw antwoorden</p>
+      </div>
+
+      <!-- Food Recommendation -->
+      <div id="result-food-card" class="glass-card-light p-6 result-card">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl flex-shrink-0" id="result-food-emoji">🍽️</div>
+          <div class="flex-1 min-w-0">
+            <div class="text-xs text-park-600 font-bold uppercase tracking-widest mb-1">Eten</div>
+            <h3 id="result-food-name" class="font-heading font-bold text-xl text-park-400 leading-tight">Loading...</h3>
+            <p id="result-food-desc" class="text-white/60 text-sm mt-1.5 leading-relaxed">...</p>
+            <div id="result-food-price" class="text-park-300 font-heading font-bold mt-2">€ --</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drink Recommendation -->
+      <div id="result-drink-card" class="glass-card-light p-6 result-card">
+        <div class="flex items-start gap-4">
+          <div class="text-4xl flex-shrink-0" id="result-drink-emoji">🥤</div>
+          <div class="flex-1 min-w-0">
+            <div class="text-xs text-park-600 font-bold uppercase tracking-widest mb-1">Drinken</div>
+            <h3 id="result-drink-name" class="font-heading font-bold text-xl text-park-400 leading-tight">Loading...</h3>
+            <p id="result-drink-desc" class="text-white/60 text-sm mt-1.5 leading-relaxed">...</p>
+            <div id="result-drink-price" class="text-park-300 font-heading font-bold mt-2">€ --</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <div class="glass-card p-5 result-card">
+        <div class="flex gap-3 items-start">
+          <div class="text-2xl flex-shrink-0">💡</div>
+          <div>
+            <h4 class="font-heading font-bold text-sm text-park-400 mb-1">Waarom dit perfect bij je past</h4>
+            <p id="result-explanation" class="text-white/60 text-sm leading-relaxed">...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col gap-3 result-card">
+        <!-- Show to staff -->
+        <button
+          id="btn-show-staff"
+          class="w-full bg-park-400 hover:bg-park-300 text-dark font-heading font-bold text-lg py-4 px-6 rounded-2xl transition-colors shadow-lg flex items-center justify-center gap-2"
+          aria-label="Laat dit zien aan de bediening"
+        >
+          <span>Laat dit zien aan onze bediening!</span>
+          <span class="text-2xl">🌿</span>
+        </button>
+
+        <!-- Copy -->
+        <button
+          id="btn-copy"
+          class="w-full bg-white/5 hover:bg-white/10 text-white/80 font-medium py-3.5 px-6 rounded-2xl transition-colors border border-white/10 flex items-center justify-center gap-2"
+          aria-label="Kopieer aanbeveling naar klembord"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span>Kopieer naar klembord</span>
+        </button>
+
+        <!-- Share -->
+        <button
+          id="btn-share"
+          class="w-full bg-white/5 hover:bg-white/10 text-white/80 font-medium py-3.5 px-6 rounded-2xl transition-colors border border-white/10 flex items-center justify-center gap-2"
+          aria-label="Deel je aanbeveling"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <span>Deel je keuze</span>
+        </button>
+
+        <!-- Restart -->
+        <button
+          id="btn-restart"
+          class="w-full text-park-400/60 hover:text-park-400 font-medium py-3 px-6 rounded-2xl transition-colors text-sm flex items-center justify-center gap-2"
+          aria-label="Doe de quiz opnieuw"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          <span>Doe de quiz opnieuw</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================
+       STAFF VIEW (fullscreen overlay)
+       ============================================ -->
+  <div id="staff-overlay" class="fixed inset-0 bg-park-400 z-50 hidden flex-col items-center justify-center p-8 text-center" role="dialog" aria-label="Bestel scherm">
+    <button id="btn-close-staff" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-dark/20 flex items-center justify-center text-dark/60 hover:bg-dark/30 hover:text-dark transition-colors" aria-label="Sluiten">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="text-6xl mb-6">🌿</div>
+    <h2 class="font-heading font-900 text-4xl text-dark mb-4">Hoi! 👋</h2>
+    <p class="text-dark/80 text-lg mb-8 max-w-sm">Ik heb de Brasserie Park Keuze Maker gedaan en dit is mijn aanbeveling:</p>
+    <div class="bg-dark/10 rounded-3xl p-6 max-w-sm w-full mb-6">
+      <div class="font-heading font-bold text-2xl text-dark mb-2" id="staff-food">—</div>
+      <div class="text-dark/60 text-lg">+</div>
+      <div class="font-heading font-bold text-2xl text-dark mt-2" id="staff-drink">—</div>
+    </div>
+    <p class="text-dark/50 text-sm">Tik ergens om te sluiten</p>
+  </div>
+
+
+  <!-- ============================================
+       TOAST NOTIFICATION
+       ============================================ -->
+  <div id="toast" class="toast glass-card px-6 py-3 text-sm text-park-400 font-medium" role="status" aria-live="polite">
+    Gekopieerd! 📋
+  </div>
+
+
+  <!-- ============================================
+       PWA INSTALL BANNER
+       ============================================ -->
+  <div id="install-banner" class="install-banner glass-card mx-4 mb-4 p-4 flex items-center gap-4 rounded-2xl" role="banner">
+    <div class="w-10 h-10 rounded-xl bg-park-400/20 flex items-center justify-center flex-shrink-0">
+      <span class="font-heading font-bold text-sm text-park-400">BP</span>
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="font-heading font-bold text-sm text-park-400">Installeer de app!</p>
+      <p class="text-white/50 text-xs">Voeg toe aan je startscherm voor snelle toegang</p>
+    </div>
+    <button id="btn-install" class="bg-park-400 text-dark font-bold text-sm py-2 px-4 rounded-xl flex-shrink-0 hover:bg-park-300 transition-colors">
+      Installeer
+    </button>
+    <button id="btn-dismiss-install" class="text-white/30 hover:text-white/60 transition-colors p-1" aria-label="Sluiten">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+
+  <!-- Confetti container (for results celebration) -->
+  <div id="confetti-container" class="confetti-container" aria-hidden="true"></div>
+
+
+  <!-- Config & Main Script -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

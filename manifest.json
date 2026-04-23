@@ -1,0 +1,26 @@
+{
+  "name": "Brasserie Park Keuze Maker",
+  "short_name": "BP Keuze",
+  "description": "Ontdek wat perfect bij jou past bij Brasserie Park in Leiderdorp!",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a1a1a",
+  "theme_color": "#C8963E",
+  "lang": "nl",
+  "categories": ["food", "lifestyle", "entertainment"],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
